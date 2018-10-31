@@ -9,14 +9,14 @@ public class WeatherProvider {
 
     }
 
-    public static WeatherProvider getProvider(){
+/*    public static WeatherProvider getProvider(){
 
     }
 
     public String getCurrentWeather(Coordinates coordinates){
 
     }
-
+*/
     private static WeatherProvider ourInstance = new WeatherProvider();
 
     public static WeatherProvider getInstance() {
