@@ -25,6 +25,10 @@ public class FileHandler {
         try(BufferedReader br = new BufferedReader((new FileReader(file)))){
             while ((line = br.readLine()) != null){
                 System.out.println(line);
+                tokens = line.split(deliminator);
+                for (String token: tokens){
+                    System.out.println(token);
+                }
             }
         }
         catch (FileNotFoundException e){
