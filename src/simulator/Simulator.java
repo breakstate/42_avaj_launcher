@@ -12,9 +12,10 @@ public class Simulator {
         String line;
 
         Loader.openFile(args[0]);
-        while ((line = Loader.readLine()) != null){
-            System.out.print(line);
-        }
+        System.out.println("args[0] = " + args[0]);
+        //while ((line = Loader.readLn()) != null){
+         //   System.out.println(line);
+        //}
     }
 
 

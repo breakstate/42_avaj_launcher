@@ -19,29 +19,21 @@ public class Loader {
     }
 
     public static void  openFile(String progArg){
-        try {
+        try{
             fileObj = new File(progArg);
-            //if !file.exists
-            fr = new FileReader(fileObj);
-            br = new BufferedReader(fr);
+            fr      = new FileReader(fileObj);
+            br      = new BufferedReader(fr);
+
+            while ((line = br.readLine()) != null){
+                System.out.println(line); // tokenize, verify and send to factory
+            }
+
+            br.close();
         }catch(Exception e){
-            System.out.println(e);
+            System.out.println("Oops something when wrong: " + e);
         }
     }
 
-    public static String    readLine(){
-        try{
-            while ((line = br.readLine()) != null){
-             return (line);
-            }
-            return (null);
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        finally{
-            return (null);
-        }
-    }
 
 /*
     // lexer
