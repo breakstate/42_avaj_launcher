@@ -1,25 +1,49 @@
 package simulator;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
-public class FileHandler {
+public class Loader {
+/**/
+    String          filename;
+    int             iterations = 0;
+    String          tokens[];
+    static String          line;
+    String          delimiter = " ";
+    static File            fileObj;
+    static FileReader      fr;
+    static FileWriter      fw;
+    static BufferedReader  br;
 
-    private String file;
-    int lines = 0;
-    int run = 0;
-    ArrayList<String[]> craft = new ArrayList();
-    String tokens[];
-    private String line;
-    String deliminator = " ";
-
-    FileHandler(){
+    Loader(){
     }
 
+    public static void  openFile(String progArg){
+        try {
+            fileObj = new File(progArg);
+            //if !file.exists
+            fr = new FileReader(fileObj);
+            br = new BufferedReader(fr);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
+    public static String    readLine(){
+        try{
+            while ((line = br.readLine()) != null){
+             return (line);
+            }
+            return (null);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        finally{
+            return (null);
+        }
+    }
+
+/*
     // lexer
     public void lexer(String fileArg){
         file = fileArg;
@@ -64,6 +88,6 @@ public class FileHandler {
     public void parser(String line[]){
 
     }
-
+*/
     // exceptions
 }
