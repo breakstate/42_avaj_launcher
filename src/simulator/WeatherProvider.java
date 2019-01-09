@@ -2,24 +2,21 @@ package simulator;
 
 public class WeatherProvider {
 
-    private static WeatherProvider weatherProvider;
-    private String weather[];
+    private static WeatherProvider weatherProvider = new WeatherProvider();
+    private String weather[] = {"RAIN", "FOG", "SUN", "SNOW"};
 
-    private WeatherProvider(){
+    private WeatherProvider(){}
 
-    }
-
-/*    public static WeatherProvider getProvider(){
-
+    public static WeatherProvider getProvider(){
+        return (weatherProvider);
     }
 
     public String getCurrentWeather(Coordinates coordinates){
+        Integer x = coordinates.getLatitude();
+        Integer y = coordinates.getLongitude();
+        Integer z = coordinates.getHeight();
+        Integer result = ((x * y) + z) % 4;
 
-    }
-*/
-    private static WeatherProvider ourInstance = new WeatherProvider();
-
-    public static WeatherProvider getInstance() {
-        return ourInstance;
+        return (weather[result]);
     }
 }
