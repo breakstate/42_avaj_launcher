@@ -7,7 +7,7 @@ public class Loader {
 /**/
     static int              lineCount = 1;
     String                  filename;
-    static int              iterations = 0;
+    static int              cycles = 0;
     static String[]         tokens;
     static String           line;
     String                  delimiter = " ";
@@ -28,30 +28,30 @@ public class Loader {
             while ((line = br.readLine()) != null){
                 tokens = line.split(" ", 0);
                 if (tokens.length == 1){
-                    getIterations(tokens[0]);
+                    getCycles(tokens[0]);
                 } else if (tokens.length == 5) {
                     getFlyable(tokens);
                 } else {
                     throw new RuntimeException("Invalid line format: line " + lineCount);
                 }
                 lineCount++;
-                System.out.println(line); // debug
+                //System.out.println(line); // debug
             }
 
             br.close();
         }catch(Exception e){
             System.out.println("Oops something when wrong: " + e);
         }
-        return (iterations);
+        return (cycles);
     }
 
-    public static int       getIterations(String line1){
+    public static int       getCycles(String line1){
         if (!isNumber(line1)) {
             throw new RuntimeException("Invalid number of iterations. You should feel bad.");
         }
-        iterations = Integer.parseInt(line1);
-        if (iterations < 0)
-            return (iterations);
+        cycles = Integer.parseInt(line1);
+        if (cycles < 0)
+            return (cycles);
         return (0);
     }
 

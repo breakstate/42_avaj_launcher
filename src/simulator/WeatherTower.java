@@ -6,7 +6,9 @@ public class WeatherTower extends Tower {
         return (wp.getCurrentWeather(coordinates));
     }
 
-    void            changeWeather(){
 
+
+    void            changeWeather(){
+        this.conditionsChanged();
     }
 }

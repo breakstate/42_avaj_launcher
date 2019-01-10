@@ -17,6 +17,7 @@ public class WeatherProvider {
         Integer z = coordinates.getHeight();
         Integer result = ((x * y) + z) % 4;
 
+        //System.out.println("Weather provider returns: " + weather[result]);// debug
         return (weather[result]);
     }
 }
