@@ -9,7 +9,7 @@ public class JetPlane extends Aircraft implements Flyable {
     }
 
     public void updateConditions(){
-        System.out.println("JetPlane#" + this.name + " BEFORE: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
+        //System.out.println("JetPlane#" + this.name + " BEFORE: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
         String newCondition = this.weatherTower.getWeather(this.coordinates);
         String message = "Didn't copy that, say again, over";
         switch (newCondition) {
@@ -30,9 +30,9 @@ public class JetPlane extends Aircraft implements Flyable {
                 message = "Initiate dive before the hydraulic lines freeze";
                 break;
         }
-        System.out.println("JetPlane#" + this.name + " AFTER: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
+        //System.out.println("JetPlane#" + this.name + " AFTER: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
         if (this.coordinates.getHeight() == 0){
-            message = "landing!" + "\n| Tower: JetPlane #" + this.name + " (" + this.id + ") unregistered from tower, over and out.";
+            message = "landing! "  + "lat: " + this.coordinates.getLatitude() + " lon: " + this.coordinates.getLongitude() + "\n| Tower: JetPlane #" + this.name + " (" + this.id + ") unregistered from tower, over and out.";
             this.weatherTower.unregister(this);
         }
 
