@@ -74,6 +74,7 @@ public class Loader {
         } else if (!isNumber(flyable[2]) || !isNumber(flyable[3]) || !isNumber(flyable[4])) {
             throw new RuntimeException("Invalid coordinates. You should feel bad: " + flyable[2] + " " + flyable[3] + " " + flyable[4]);
         }
+        //System.out.println("LOADER::: " + flyable[0] + ": height = " + flyable[4]); debug
         Flyable craft = AircraftFactory.newAircraft(flyable[0], flyable[1], Integer.parseInt(flyable[2]), Integer.parseInt(flyable[3]), Integer.parseInt(flyable[4]));
         craft.registerTower(Simulator.wt);
     }

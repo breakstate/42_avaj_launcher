@@ -11,7 +11,7 @@ public class Helicopter extends Aircraft implements Flyable {
     }
 
     public void updateConditions(){
-        System.out.println("Helicopter#" + this.name + ": lat = " + coordinates.getLatitude() + "lon = " + coordinates.getLongitude() + "h = " + coordinates.getHeight());
+        System.out.println("Helicopter#" + this.name + " BEFORE: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
         String newCondition = this.weatherTower.getWeather(this.coordinates);
         String message = "Didn't copy that, say again, over";
         switch (newCondition) {
@@ -32,11 +32,11 @@ public class Helicopter extends Aircraft implements Flyable {
                 message = "Emergency descent! Before the lines freeze and we can't autorotate!";
                 break;
         }
-//        if (this.coordinates.getHeight() == 0){
-//            message = "landing!";
-//            this.weatherTower.unregister(this);
-//            System.out.println("Tower: Helicopter #" + this.name + " (" + this.id + ") unregistered from tower, over and out."); // debug
- //       }
+        System.out.println("Helicopter#" + this.name + " AFTER: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
+        if (this.coordinates.getHeight() == 0){
+            message = "landing!" + "\n| Tower: Helicopter #" + this.name + " (" + this.id + ") unregistered from tower, over and out.";
+            this.weatherTower.unregister(this);
+    }
 
         System.out.println("Helicopter#" +this.name + "(" + this.id + "): " + message); // debug
     }
@@ -44,6 +44,6 @@ public class Helicopter extends Aircraft implements Flyable {
     public void registerTower(WeatherTower weatherTower){
         this.weatherTower = weatherTower;
         weatherTower.register(this);
-        System.out.println("Tower: Helicopter #" + this.name + " (" + this.id + ") registered to weather tower, over.");
+        System.out.println("| Tower: Helicopter #" + this.name + " (" + this.id + ") registered to weather tower, over.");
     }
 }
