@@ -1,4 +1,3 @@
-package simulator;
 import java.util.Random;
 
 public class WeatherProvider {
@@ -17,7 +16,7 @@ public class WeatherProvider {
         Integer y = coordinates.getLongitude();
         Integer z = coordinates.getHeight();
         int randomInt = new Random().nextInt(2);
-        System.out.println("Random int = " + randomInt);
+        //System.out.println("Random int = " + randomInt); // debug
         Integer result = (((x * y) + z) + randomInt) % 4;
 
         //System.out.println("Weather provider returns: " + weather[result]);// debug

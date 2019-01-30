@@ -1,5 +1,3 @@
-package simulator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +10,13 @@ public abstract class Tower {
     }
 
     public void unregister(Flyable flyable){
-        this.observers.remove(flyable);
+        //this.observers.remove(flyable);
     }
 
     protected void conditionsChanged(){
         for (int i = 0; i < observers.size(); i++) {
-            observers.get(i).updateConditions();
+            if (observers.get(i).coordinates.getHeight() != 0)
+                observers.get(i).updateConditions();
         }
     }
 }

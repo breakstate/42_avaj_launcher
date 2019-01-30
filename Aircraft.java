@@ -1,5 +1,3 @@
-package simulator;
-
 public abstract class Aircraft {
 
     protected   long            id;
