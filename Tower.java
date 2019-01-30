@@ -10,13 +10,14 @@ public abstract class Tower {
     }
 
     public void unregister(Flyable flyable){
-        //this.observers.remove(flyable);
+        this.observers.remove(flyable);
     }
 
     protected void conditionsChanged(){
         for (int i = 0; i < observers.size(); i++) {
-            if (observers.get(i).coordinates.getHeight() != 0)
+            if (observers.get(i).getState() == false) {
                 observers.get(i).updateConditions();
+            }
         }
     }
 }

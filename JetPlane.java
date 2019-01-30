@@ -1,6 +1,9 @@
 public class JetPlane extends Aircraft implements Flyable {
 
     private WeatherTower weatherTower;
+    public boolean landed = false;
+    private String msg;
+
 
     JetPlane(String name, Coordinates coordinates){
         super(name, coordinates);
@@ -11,7 +14,8 @@ public class JetPlane extends Aircraft implements Flyable {
         String message = "Didn't copy that, say again, over";
         if (this.coordinates.getHeight() == 0){
             message = "landing! "  + "lat: " + this.coordinates.getLatitude() + " lon: " + this.coordinates.getLongitude() + "\n| Tower: JetPlane #" + this.name + " (" + this.id + ") unregistered from tower, over and out.";
-            this.weatherTower.unregister(this);
+            //this.weatherTower.unregister(this);
+            landed = true;
         } else {
             //System.out.println("JetPlane#" + this.name + " BEFORE: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
             switch (newCondition) {
@@ -35,7 +39,7 @@ public class JetPlane extends Aircraft implements Flyable {
         }
         //System.out.println("JetPlane#" + this.name + " AFTER: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
 
-
+        Loader.writeToFile("JetPlane#" +this.name + "(" + this.id + "): " + message);
         System.out.println("JetPlane#" +this.name + "(" + this.id + "): " + message); // debug
     }
 
@@ -43,5 +47,11 @@ public class JetPlane extends Aircraft implements Flyable {
         this.weatherTower = weatherTower;
         weatherTower.register(this);
         System.out.println("| Tower: JetPlane #" + this.name + " (" + this.id + ") registered to weather tower, over.");
+        Loader.writeToFile("| Tower: JetPlane #" + this.name + " (" + this.id + ") registered to weather tower, over.");
     }
+
+    public boolean getState(){
+        return landed;
+    }
+
 }

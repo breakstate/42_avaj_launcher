@@ -1,6 +1,9 @@
 public class Baloon extends Aircraft implements Flyable {
 
     private WeatherTower weatherTower;
+    public boolean landed = false;
+    private String msg;
+
 
     Baloon(String name, Coordinates coordinates){
         super(name, coordinates);
@@ -11,7 +14,8 @@ public class Baloon extends Aircraft implements Flyable {
         String message = "Didn't copy that, say again, over";
         if (this.coordinates.getHeight() == 0){
             message = "landing! " + "lat: " + this.coordinates.getLatitude() + " lon: " + this.coordinates.getLongitude() + "\n| Tower: Baloon #" + this.name + " (" + this.id + ") unregistered from tower, over and out.";
-            this.weatherTower.unregister(this);
+            //this.weatherTower.unregister(this);
+            landed = true;
         } else {
             //System.out.println("Baloon#" + this.name + " BEFORE: lat = " + coordinates.getLatitude() + " lon = " + coordinates.getLongitude() + " h = " + coordinates.getHeight()); // debug
             switch (newCondition) {
@@ -37,11 +41,17 @@ public class Baloon extends Aircraft implements Flyable {
 
 
         System.out.println("Baloon#" +this.name + "(" + this.id + "): " + message); // debug
+        Loader.writeToFile("Baloon#" +this.name + "(" + this.id + "): " + message);
     }
 
     public void registerTower(WeatherTower weatherTower){
         this.weatherTower = weatherTower;
         weatherTower.register(this);
         System.out.println("| Tower: Baloon #" + this.name + " (" + this.id + ") registered to weather tower, over.");
+        Loader.writeToFile("| Tower: Baloon #" + this.name + " (" + this.id + ") registered to weather tower, over.");
+    }
+
+    public boolean getState(){
+        return landed;
     }
 }

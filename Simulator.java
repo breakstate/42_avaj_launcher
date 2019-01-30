@@ -14,6 +14,7 @@ public class Simulator {
         }
         for (int i = 0; i < cycles; i++) {
             System.out.println("\nSimulation cycle: " + (i + 1));// debug
+            Loader.writeToFile("\nSimulation cycle: " + (i + 1));// debug
             wt.changeWeather();
         }
     }
